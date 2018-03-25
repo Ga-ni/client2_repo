@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- 로고 -->
+    <ImageView
+        android:id="@+id/equipmentTitle"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="61dp"
+        android:src="@drawable/title" />
+
+    <RelativeLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/equipmentTitle"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/press"
+        android:padding="10dp">
+
+        <ImageButton
+            android:id="@+id/enterEquipmentStateBtn"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:layout_centerHorizontal="true"
+            android:background="#00000000"
+            android:scaleType="fitXY"
+            android:src="@drawable/mascot" />
+
+        <!--<TextView
+            android:id="@+id/enterEquipmentStateBtnTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/enterEquipmentStateBtn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="안전장구 착용여부 보기"
+            android:textStyle="bold" />
+            -->
+    </RelativeLayout>
+
+    <!--배경 디자인 로고-->
+    <ImageView
+        android:id="@+id/bgLogo"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_above="@+id/copyRight"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/bg_logo" />
+
+
+    <TextView
+        android:id="@+id/copyRight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+
+        android:layout_marginBottom="2dp"
+        android:gravity="center"
+        android:text="@string/copyright"
+        android:textSize="12sp" />
+
+
+</RelativeLayout>
