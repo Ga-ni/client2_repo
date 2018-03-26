@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context="com.example.yge30.client2_repo.LoginActivity">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bg_line" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="147dp">
+
+
+        <TextView
+            android:id="@+id/TextView_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:textSize="50dp" />
+
+        <GridLayout
+            android:id="@+id/GridLayout"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:rowCount="2">
+
+            <TextView
+                android:id="@+id/TextView_id"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/textview_id" />
+
+            <EditText
+                android:id="@+id/EditText_id"
+                android:layout_width="200dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/TextView_pw"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/textview_pw" />
+
+            <EditText
+                android:id="@+id/EditText_pw"
+                android:layout_width="200dp"
+                android:layout_height="match_parent" />
+        </GridLayout>
+
+        <Button
+            android:id="@+id/Button_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/button_login" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bg_line" />
+
+</LinearLayout>

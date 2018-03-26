@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">client2_repo</string>
+    <string name="textview_id">ID</string>
+    <string name="textview_pw">PW</string>
+    <string name="button_login">확인</string>
     <string name="copyright">Copyright 2018. Gachon Univ.</string>
+
+    <string name="title_activity_worker_list">WorkerListActivity</string>
+    <string name="tab_text_1">회사별</string>
+    <string name="tab_text_2">구역별</string>
+    <string name="tab_title">안전확인</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>
