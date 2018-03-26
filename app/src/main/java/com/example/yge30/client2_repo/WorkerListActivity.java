@@ -1,8 +1,10 @@
 package com.example.yge30.client2_repo;
 
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -17,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class WorkerListActivity extends AppCompatActivity {
@@ -118,13 +121,24 @@ public class WorkerListActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_worker_list, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            View rootView = inflater.inflate(R.layout.fragment_worker_list, container, false);//constraintLayout
+            //ConstraintLayout layout= (ConstraintLayout)rootView.findViewById(R.id.constraintLayout);
+           // ConstraintLayout constlayout=rootView.fin
+            ListView listView = rootView.findViewById(R.id.listView);
+            //.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            dataSetting(listView);
             return rootView;
         }
     }
 
+    private static void dataSetting(ListView listView){
+        ListViewAdapter mListViewAdapter= new ListViewAdapter();
+
+        for(int i=0;i<10;i++){
+            mListViewAdapter.addItem("company_"+i,"ID_"+i,(i%2)==0);
+        }
+        listView.setAdapter(mListViewAdapter);
+    }
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
