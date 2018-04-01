@@ -1,10 +1,8 @@
-package com.example.yge30.client2_repo;
+package com.example.bestf.marioclient;
 
-import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -13,7 +11,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,10 +18,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-public class WorkerListActivity extends AppCompatActivity {
+public class M_WorkerListActivity extends AppCompatActivity {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -48,7 +43,7 @@ public class WorkerListActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        // Create the adapter that will return a fragment for each of the two
+        // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
@@ -57,7 +52,7 @@ public class WorkerListActivity extends AppCompatActivity {
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        //int position=tabLayout.getSelectedTabPosition();
+
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
@@ -123,18 +118,17 @@ public class WorkerListActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_worker_list, container, false);//constraintLayout
-            //ConstraintLayout layout= (ConstraintLayout)rootView.findViewById(R.id.constraintLayout);
-           // ConstraintLayout constlayout=rootView.fin
+            View rootView = inflater.inflate(R.layout.fragment_worker_list, container, false);
+            //TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+            //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             ListView listView = rootView.findViewById(R.id.listView);
-            //.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             dataSetting(listView);
             return rootView;
         }
     }
 
     private static void dataSetting(ListView listView){
-        ListViewAdapter mListViewAdapter= new ListViewAdapter();
+        M_ListViewAdapter mListViewAdapter= new M_ListViewAdapter();
 
         for(int i=0;i<10;i++){
             mListViewAdapter.addItem("company_"+i,"ID_"+i,(i%2)==0);

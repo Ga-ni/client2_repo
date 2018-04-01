@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.yge30.client2_repo">
+    package="com.example.bestf.marioclient">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -9,22 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-        </activity>
-        <activity android:name=".CoverActivity">
+        <activity android:name=".C_AccessActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".C_LoginActivity" />
+        <activity android:name=".C_RegisterActivity" />
+        <activity android:name=".C_MainActivity" />
+        <activity android:name=".W_EquipmentStateActivity" />
         <activity
-            android:name=".WorkerListActivity"
+            android:name=".M_WorkerListActivity"
             android:label="@string/title_activity_worker_list"
             android:theme="@style/AppTheme"></activity>
     </application>
