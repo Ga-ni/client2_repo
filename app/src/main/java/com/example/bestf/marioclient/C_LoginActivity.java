@@ -52,9 +52,11 @@ public class C_LoginActivity extends AppCompatActivity {
                             if(success){
                                 String userID = jsonResponse.getString("userID");
                                 String userPassword = jsonResponse.getString("userPassword");
+//                                String userAuth=jsonResponse.getString("is_Manager");
                                 Intent intent = new Intent(C_LoginActivity.this, C_MainActivity.class);
                                 intent.putExtra("userID", userID);
                                 intent.putExtra("userPassword", userPassword);
+//                                intent.putExtra("userAuth", userAuth);
                                 C_LoginActivity.this.startActivity(intent);
 
                             }

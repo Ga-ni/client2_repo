@@ -6,9 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class C_MainActivity extends AppCompatActivity {
-    boolean manager=true;   //***********수정
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,25 +23,33 @@ public class C_MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String userID = intent.getStringExtra("userID");
         String userPassword = intent.getStringExtra("userPassword");
+//        String userAuth = intent.getStringExtra("userAuth");
         String message = "환영합니다\n" + userID + "님!";
+
 
         idText.setText(userID);
         passwordText.setText(userPassword);
         welcomeMessage.setText(message);
+//      if(userAuth.equals("1")){//1아니면 true
+//          Toast.makeText(getApplicationContext(), "관리자 로그인", Toast.LENGTH_SHORT).show();
+//      }
 
         equipmentStateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(manager){   //***********수정
-                    Intent workerList = new Intent(C_MainActivity.this, M_WorkerListActivity.class);
-                    C_MainActivity.this.startActivity(workerList);
-                    finish();
-                }
-                else {
-                    Intent equipmentStateIntent = new Intent(C_MainActivity.this, W_EquipmentStateActivity.class);
-                    C_MainActivity.this.startActivity(equipmentStateIntent);
-                    finish();
-                }
+                Intent workerList = new Intent(C_MainActivity.this, M_WorkerListActivity.class);
+                C_MainActivity.this.startActivity(workerList);
+                finish();
+//                if(userAuth.equals("1")){
+//                    Intent workerList = new Intent(C_MainActivity.this, M_WorkerListActivity.class);
+//                    C_MainActivity.this.startActivity(workerList);
+//                    finish();
+//                }
+//                else {
+//                    Intent equipmentStateIntent = new Intent(C_MainActivity.this, W_EquipmentStateActivity.class);
+//                    C_MainActivity.this.startActivity(equipmentStateIntent);
+//                    finish();
+//                }
             }
         });
     }

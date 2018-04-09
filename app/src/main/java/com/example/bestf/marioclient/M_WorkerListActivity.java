@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class M_WorkerListActivity extends AppCompatActivity {
 
@@ -43,7 +45,7 @@ public class M_WorkerListActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        // Create the adapter that will return a fragment for each of the three
+        // Create the adapter that will return a fragment for each of the two
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
@@ -56,15 +58,7 @@ public class M_WorkerListActivity extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
+        Log.d("check", "61_onCreate");
     }
 
 
@@ -108,9 +102,11 @@ public class M_WorkerListActivity extends AppCompatActivity {
          * number.
          */
         public static PlaceholderFragment newInstance(int sectionNumber) {
+            Log.d("check", "105 :" + sectionNumber);
             PlaceholderFragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+            Log.d("check", "107 :" + sectionNumber);
             fragment.setArguments(args);
             return fragment;
         }
@@ -118,6 +114,7 @@ public class M_WorkerListActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
+            Log.d("check", "115");
             View rootView = inflater.inflate(R.layout.fragment_worker_list, container, false);
             //TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
@@ -127,14 +124,20 @@ public class M_WorkerListActivity extends AppCompatActivity {
         }
     }
 
-    private static void dataSetting(ListView listView){
-        M_ListViewAdapter mListViewAdapter= new M_ListViewAdapter();
+    ////added function
+    private static void dataSetting(ListView listView) {
+        M_ListViewAdapter regListViewAdapter = new M_ListViewAdapter();
 
-        for(int i=0;i<10;i++){
-            mListViewAdapter.addItem("company_"+i,"ID_"+i,(i%2)==0);
+        //여기서 서버에 데이터 요청하면 될 듯, "구역이름"으로 정렬된 list받아오기
+        //is_safe는 3개의 장비가 모두 true면 true
+        for (int i = 0; i < 10; i++) {
+            regListViewAdapter.addItem("company_" + i, "ID_" + i, (i % 2) == 0);
         }
-        listView.setAdapter(mListViewAdapter);
+
+        listView.setAdapter(regListViewAdapter);
+        Log.d("check", "137_dataSetting");
     }
+
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
@@ -149,7 +152,19 @@ public class M_WorkerListActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            switch (position) {
+                case 0:
+                    M_CompanyListFragment fragment1 = new M_CompanyListFragment();
+                    Log.d("check", "frag_company");
+                    return fragment1.newInstance();
+                case 1:
+//                    M_RegionListFragment fragment2= new M_RegionListFragment();
+//                    return fragment2.newInstance();
+//                    Log.d("check","frag_region");
+                    return PlaceholderFragment.newInstance(position + 1);
+            }
+            //return PlaceholderFragment.newInstance(position + 1);
+            return null;
         }
 
         @Override

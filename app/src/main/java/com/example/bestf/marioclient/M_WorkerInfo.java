@@ -5,9 +5,9 @@ package com.example.bestf.marioclient;
  */
 
 public class M_WorkerInfo {
-    private String company;
-    private String ID;
-    private boolean is_safe;
+    private String company="no name";
+    private String ID="no name";
+    private boolean is_safe=false;
 
     public String getCompany() {
         return company;

@@ -1,11 +1,17 @@
 package com.example.bestf.marioclient;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.renderscript.Sampler;
+import android.support.annotation.ColorInt;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -32,7 +38,7 @@ public class M_ListViewAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, final ViewGroup parent) {
         Context context=parent.getContext();
         if(convertView==null){
             LayoutInflater inflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -41,20 +47,39 @@ public class M_ListViewAdapter extends BaseAdapter {
 
         TextView tv_company=(TextView)convertView.findViewById(R.id.tv_company);
         TextView tv_ID=(TextView)convertView.findViewById(R.id.tv_ID);
-        TextView tv_isSafe=(TextView)convertView.findViewById(R.id.tv_isSafe);
+        //TextView tv_isSafe=(TextView)convertView.findViewById(R.id.tv_isSafe);
+        Button btn_is_safe=(Button)convertView.findViewById(R.id.btn_warning);
+        btn_is_safe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //worker에게 경고 보내기
+                Toast.makeText(parent.getContext(),"경고다!!!",Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
         M_WorkerInfo wInfo=getItem(position);
 
         tv_company.setText(wInfo.getCompany());
         tv_ID.setText(wInfo.getID());
-
-        String ox="";
-        if(wInfo.isIs_safe()) ox="O";
-        else ox="X";
-        tv_isSafe.setText(ox);
+        if(wInfo.isIs_safe()){
+            btn_is_safe.setClickable(false);
+            btn_is_safe.setBackgroundColor(Color.parseColor("#646464"));
+            btn_is_safe.setTextColor(Color.parseColor("#979797"));
+            btn_is_safe.setText("안전");
+        }
+        else{
+            btn_is_safe.setClickable(true);
+            btn_is_safe.setBackgroundColor(Color.parseColor("#ff3333"));
+            btn_is_safe.setTextColor(Color.parseColor("#000000"));
+            btn_is_safe.setText("경고");
+        }
+        //tv_isSafe.setText(ox);
 
         return convertView;
     }
+
+
     public void addItem(String company, String ID, boolean is_safe){
         M_WorkerInfo wInfo=new M_WorkerInfo();
 
